@@ -1,0 +1,18 @@
+
+extends ../views/layout
+block content
+
+  main.container.p-5.rounded
+    ul.list-group.mb-3
+      each task in tasks
+        li.list-group-item
+          div.d-flex.flex-row.justify-content-between
+            span(style=task.status == 2 ? 'text-decoration: line-through;' : '')= task.name + ' - ' + task.description 
+            div.d-flex.flex-row.justify-content-around
+              a.btn.btn-link.btn-sm(href=`tasks/${task.id}`) Edit
+              if task.status == 1
+                a.btn.btn-link.btn-sm(href=`tasks/${task.id}/completed`) Complete
+              else
+                a.btn.btn-link.btn-sm(href=`tasks/${task.id}/incomplete`) Incomplete
+    .d-flex.flex-row.justify-content-end.gap-3
+      a(href='/tasks/create').btn.btn-primary Add

@@ -1,0 +1,12 @@
+
+extends ../views/layout
+block content
+
+  main.container.p-5.rounded
+    h4 Add new task 
+    form(action=`/tasks/${task.id}`, method="POST")
+      input(type="hidden", name="_method", value="PUT")
+      .d-flex.flex-row.gap-3
+          input.form-control(name='name', placeholder='add task name', autofocus, value=task.name)
+          input.form-control(name='description', placeholder='add task description', autofocus, value=task.description)
+          button.btn.btn-primary Save
